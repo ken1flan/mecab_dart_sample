@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mecab_dart/mecab_dart.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  var tagger = Mecab();
+  await tagger.init('assets/ipadic', true);
+  var tokens = tagger.parse('にわにわにわにわとりがいる。');
+
   runApp(const MyApp());
 }
 
